@@ -1,0 +1,135 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using UserModel;
+using Dapper;
+using MySql.Data.MySqlClient;
+
+namespace UserRepository
+{
+  public class UserRepository : DbContext
+{
+  public UserRepository(IDbConnection db) : base(db)
+  {
+
+  }
+
+  public UserReturnModel Register(RegisterUserModel creds)
+  {
+    try{
+      var sql = @"
+      INSERT INTO users (id, username, email, password)
+      VALUES (@Id, @Username, @Email, @Password);
+      ";
+      creds.Password = BCrypt.Net.BCrypt.HashPassword(creds.Password);
+      var id = Guid.NewGuid().ToString();
+      _db.ExecuteScalar<string>(sql, new{
+        Id = id,
+        Username = creds.Username,
+        Email = creds.Email,
+        Password = creds.Password
+      });
+
+      return new UserReturnModel()
+      {
+        Id = id,
+        Username = creds.Username,
+        Email = creds.Email
+      };
+    }
+    catch (MySqlException e)
+    {
+      System.Console.WriteLine("Error: " + e.Message);
+      return null;
+    }
+  }
+
+  public UserReturnModel Login(LoginUserModel creds)
+  {
+    User user = _db.QueryFirstOrDefault<user>(@"
+      SELECT * FROM users WHERE email = @Email
+      ", creds);
+      if (user != null)
+      {
+        var valid = BCrypt.Net.BCrypt.Verify(creds.Password, user.Password);
+        if (valid)
+        {
+          return user.GetReturnModel();
+        }
+      }
+      return null;
+  }
+
+  internal UserReturnModel GetUserByEmail(string email)
+  {
+    User user = _db.QueryFirstOrDefault<User>(@"
+          SELECT * FROM users WHERE email = @Email
+          ", new {email});
+          return user.GetReturnModel();
+  }
+
+  internal UserReturnModel GetUserById(string id)
+  {
+    if (id != null)
+    {
+      User savedUser = _db.QueryFirstOrDefault<User>(@"
+      SELECT * FROM users WHERE id = @Id", new {id});
+      return savedUser.GetReturnModel();
+    }
+    return null;
+  }
+  internal UserReturnModel UpdateUser(UserReturnModel user)
+  {
+    var i = _db.Execute(@"
+        UPDATE users SET
+          email = @Email,
+          username =@Username
+          WHERE id =@id
+          ", user);
+          if (i >0)
+          {
+            return user;
+          }
+          return null;
+  }
+
+  internal string ChangeUserPassword(ChangeUserPasswordModel user)
+  {
+    User savedUser = _db.QueryFirstOrDefault<User>(@"
+          SELECT * FROM users WHERE id = @Id
+          ", user);
+    var valid = BCrypt.Net.BCrypt.Verify(user.OldPassword, savedUser.Password);
+    if (valid)
+    {
+      user.NewPassword = BCrypt.Net.BCrypt.HashPassword(user.NewPassword);
+      var i = _db.Execute(@"
+            UPDATE users SET
+            password = @NewPassword
+            Where id = @Id
+            ", user);
+            return "Password Changed Successfully";
+    }
+    return "Password Change Unsuccessful, Please try again";
+  }
+  internal IEnumerable<vault> GetUserVaults(string id)
+  {
+    return _db.Query<ValueTuple>(@"
+    SELECT * FROM uservaults uf
+    INNER JOIN posts p ON p.id = uf.vaultId
+    WHERE (userId=@Id)", new{id});
+  }
+
+  internal bool AddKeep(int vaultId, string UserId)
+  {
+    int id = _db.Execute(@"
+          INSERT INTO userKeeps (vaultId, userId)
+          VALUES (@vaultId, @userId);
+          ", new {
+            vaultId,
+            userId
+          });
+
+          return id > 0;
+  }
+}
+}
