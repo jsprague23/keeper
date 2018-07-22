@@ -46,7 +46,7 @@ namespace UserRepository
 
   public UserReturnModel Login(LoginUserModel creds)
   {
-    User user = _db.QueryFirstOrDefault<user>(@"
+    User user = _db.QueryFirstOrDefault<User>(@"
       SELECT * FROM users WHERE email = @Email
       ", creds);
       if (user != null)
@@ -111,15 +111,15 @@ namespace UserRepository
     }
     return "Password Change Unsuccessful, Please try again";
   }
-  internal IEnumerable<vault> GetUserVaults(string id)
+  internal IEnumerable<Vault> GetUserVaults(string id)
   {
-    return _db.Query<ValueTuple>(@"
+    return _db.Query<Vault>(@"
     SELECT * FROM uservaults uf
     INNER JOIN posts p ON p.id = uf.vaultId
     WHERE (userId=@Id)", new{id});
   }
 
-  internal bool AddKeep(int vaultId, string UserId)
+  internal bool AddKeep(int vaultId, string userId)
   {
     int id = _db.Execute(@"
           INSERT INTO userKeeps (vaultId, userId)
