@@ -7,9 +7,9 @@ using MySql.Data.MySqlClient;
 
 namespace UserRepository
 {
-  public class UserRepository : DbContext
+  public class User_Repository : DbContext
 {
-  public UserRepository(IDbConnection db) : base(db)
+  public User_Repository(IDbConnection db) : base(db)
   {
 
   }

@@ -1,0 +1,4 @@
+C:\Users\jerem\source\CodeWorks\keeper\obj\Debug\netcoreapp2.1\keeper.csprojAssemblyReference.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Debug\netcoreapp2.1\keeper.csproj.CoreCompileInputs.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Debug\netcoreapp2.1\keeper.AssemblyInfoInputs.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Debug\netcoreapp2.1\keeper.AssemblyInfo.cs

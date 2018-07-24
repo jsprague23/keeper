@@ -50,7 +50,7 @@ namespace keeper
 
         services.AddMvc();
         services.AddTransient<IDbConnection>(x => CreateDbContext());
-        services.AddTransient<UserRepository>();
+        services.AddTransient<User_Repository>();
         }
 
         private IDbConnection CreateDbContext()

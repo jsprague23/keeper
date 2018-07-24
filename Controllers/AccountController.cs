@@ -13,9 +13,9 @@ namespace UserController
   [Route("[controller]")]
   public class AccountController : Controller
   {
-    private readonly UserRepository _db;
+    private readonly User_Repository _db;
 
-    public AccountController(UserRepository repo)
+    public AccountController(User_Repository repo)
     {
       _db = repo;
     }
