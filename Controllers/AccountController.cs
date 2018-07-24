@@ -55,7 +55,7 @@ namespace UserController
     public UserReturnModel Authenticate()
     {
       var user = HttpContext.User;
-      var i = user.Identity.Name;
+      var id = user.Identity.Name;
       return _db.GetUserById(id);
     }
     [Authorize]
@@ -81,7 +81,7 @@ namespace UserController
       if(ModelState.IsValid)
       {
         var email = HttpContext.User.Claims.Where(c => c.Type == ClaimTypes.Email)
-            .Select(char=> c.Value).SingleOrDefault();
+            .Select(c=> c.Value).SingleOrDefault();
         var sessionUser = _db.GetUserByEmail(email);
 
         if(sessionUser.Id == user.Id)
@@ -95,7 +95,7 @@ namespace UserController
 
     [Authorize]
     [HttpGet("keeps")]
-    public IEnumerable<vault> GetUserVaults(){
+    public IEnumerable<Vault> GetUserVaults(){
       var user =HttpContext.User.Identity.Name;
       return _db.GetUserVaults(user);
     }
