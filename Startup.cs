@@ -55,7 +55,7 @@ namespace keeper
 
         private IDbConnection CreateDbContext()
         {
-            var connection = new MySQLConnection(_connectionString);
+            var connection = new MySqlConnection(_connectionString);
             connection.Open();
             return connection;
         }
