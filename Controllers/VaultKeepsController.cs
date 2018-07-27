@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace UserController
 {
-  [Route("api/[controller")]
+  [Route("api/[controller]")]
   public class VaultKeepsController : Controller
   {
     private readonly VaultKeepsRepository _db;

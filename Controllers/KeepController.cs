@@ -21,7 +21,7 @@ namespace UserController
       if(ModelState.IsValid)
       {
         var user = HttpContext.User;
-        newKeep.UserId = User.Identity.Name;
+        newKeep.UserId = user.Identity.Name;
         return _db.CreateKeep(newKeep);
       }
       return null;
@@ -48,7 +48,7 @@ namespace UserController
       return _db.EditKeep(id, newKeep);
     }
     [Authorize]
-    [HttpDelete("{id")]
+    [HttpDelete("{id}")]
     public void DeleteKeep(int id)
     {
 
