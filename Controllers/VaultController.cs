@@ -4,6 +4,7 @@ using UserModel;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace UserController
 {
   [Route("api/[controller]")]
@@ -37,7 +38,7 @@ namespace UserController
     {
       var user = HttpContext.User;
       var id = user.Identity.Name;
-      return _db.GetByUserId(id);
+      return _db.GetByUserId(UserId);
     }
 
     [Authorize]
@@ -48,9 +49,9 @@ namespace UserController
     }
     [Authorize]
     [HttpDelete("{id}")]
-    public void DeleteVault(int id)
-    {
-
+    public bool DeleteVault(int id)
+     {
+       return _db.DeleteVault(id);
     }
   }
 }

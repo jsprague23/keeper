@@ -49,9 +49,9 @@ namespace UserController
     }
     [Authorize]
     [HttpDelete("{id}")]
-    public void DeleteKeep(int id)
-    {
-
+    public bool DeleteKeep(int id)
+     {
+       return _db.DeleteKeep(id);
     }
   }
 }
