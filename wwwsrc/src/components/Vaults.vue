@@ -1,19 +1,21 @@
 <template>
   <div class="Vaults container-fluid d-flex justify-content-center">
-    <div class="jumbotron logoFont">
-      
-    </div>
-    <div class="card-columns">
-      <div class="card">
-        <router-link @click.native="activeVault(Vault)" :to "{name: 'VaultDetails', params:{id: Vault.id}">
-          <h3 class="card-title logoFont clicker">{{Vault.name}}</h3>
-        </router-link>
-        <div class="card-body">
-          <h5 class="logoFont">Description:</h5>
-          <h3 class="logoFont font-weight-bold">Description:</h3>
-          <h4 class="logoFont font-weight-light ">{{Vault.Description}}</h4>
-          <h3 class="logoFont font-weight-bold">Vault Author:</h3>
-          <h3 class="logoFont font-italic font-weight-bold">{{currentUser.name}}</h3>
+    <div class="row">
+      <div class="jumbotron logoFont">
+        <h1> Your Corrals</h1>
+      </div>
+      <div class="card-columns">
+        <div class="card Vault in Vaults">
+          <router-link @click.native="activeVault(Vault)" :to "{name: 'VaultDetails', params:{id: Vaults.id}">
+            <h3 class="card-title logoFont clicker">{{Vaults.name}}</h3>
+          </router-link>
+          <div class="card-body">
+            <h5 class="logoFont">Description:</h5>
+            <h3 class="logoFont font-weight-bold">Description:</h3>
+            <h4 class="logoFont font-weight-light ">{{Vaults.Description}}</h4>
+            <h3 class="logoFont font-weight-bold">Corral Author:</h3>
+            <h3 class="logoFont font-italic font-weight-bold">{{currentUser.name}}</h3>
+          </div>
         </div>
       </div>
     </div>
@@ -46,7 +48,7 @@
     name: 'Vaults',
     data() {
       return {
-        showModal:0,
+        showModal: 0,
         newVault: {
           Name: '',
           Description: ''
@@ -54,17 +56,17 @@
 
       }
     },
-    mounted(){
+    mounted() {
       this.$store.dispatch("getVaults")
     },
     components: {
       Modal
     },
     computed: {
-      Vaults(){
+      Vaults() {
         return this.$store.state.Vaults
       },
-      currentUser(){
+      currentUser() {
         return this.$store.state.currentUser
       }
     },
@@ -72,11 +74,11 @@
       deleteVault(id) {
         this.$store.dispatch('deleteVault', id)
       },
-      createVault(){
-        this.$store.dispatch('createVault',this.newVault)
+      createVault() {
+        this.$store.dispatch('createVault', this.newVault)
       },
       toggleModal(n) {
-        this.showModal+=n
+        this.showModal += n
       },
       activeVault(Vault) {
         this.$store.dispatch('activeVault', Vault)

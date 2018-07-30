@@ -85,16 +85,18 @@ export default new vuex.Store({
       commit("setActiveKeep", Keep)
     },
     createVault({commit,dispatch,state}, Vault){
-      api.post("/api/Vault", Vault)
+      
+      api.post("/api/Vault", Vault)      
       .then(res => {
-        dispatch("getVaults", res.data)
         commit("setVaults", res.data)
+        router.push({name:"VaultDetails"})
       })
       .catch(err =>{
         console.log(err)
       })
     },
     getVaults({dispatch, commit,state}){
+      debugger
       api.get('/api/Vault'+ state.currentUser.id)
       .then(res =>{
         commit('setVaults', res.data)
