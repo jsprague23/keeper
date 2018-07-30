@@ -93,6 +93,18 @@ export default new vuex.Store({
       .catch(err =>{
         console.log(err)
       })
+    },
+    getVaults({dispatch, commit,state}){
+      api.get('/api/Vault'+ state.currentUser.id)
+      .then(res =>{
+        commit('setVaults', res.data)
+        dispatch("getVaults")
+      })
+    },
+    deleteVault({commit,dispatch},id){
+      api.delete('/api/Vault'+ id)
+      commit('setVaults')
+      dispatch('getVaults')
     }
     
   }
