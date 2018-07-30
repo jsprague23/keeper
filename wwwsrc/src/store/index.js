@@ -39,6 +39,9 @@ export default new vuex.Store({
     setUser(state, currentUser) {
       state.currentUser = currentUser
     },
+    setVaults(state, Vaults){
+      state.Vaults =Vaults
+    }
 
   },
   actions: {
@@ -75,6 +78,22 @@ export default new vuex.Store({
         commit('setUser', res.data)
       })
     },
+    activeVault({commit, dispatch,state}, Vault){
+      commit("setActiveVault", Vault)
+    },
+    activeKeep({commit, dispatch, state}, Keep){
+      commit("setActiveKeep", Keep)
+    },
+    createVault({commit,dispatch,state}, Vault){
+      api.post("/api/Vault", Vault)
+      .then(res => {
+        dispatch("getVaults", res.data)
+        commit("setVaults", res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+    }
     
   }
 

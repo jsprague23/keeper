@@ -1,22 +1,41 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    
+  <div class="container-fluid d-flex justify-content-center">
+    <div class="jumbotron">
+      <h1 class="logoFont">Howdy there cowpolk!</h1>
+      <h5 class="logoFont">Don't be shy, look around stay awhile. This is your profile after all. My hats off to you. Its a pretty nice place you've got here.</h5>
+    </div>
+    <Vaults></Vaults>
+
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  import Vaults from './Vaults'
+  import Modal from './Modal'
+  export default {
+    name: 'ProfilePage',
+    data() {
+      return {
+
+      }
+    },
+    components: {
+      Vaults,
+      Modal
+    },
+    computed: {
+      currentUser() {
+        return this.$store.state.currentUser
+      },
+      userVaults() {
+        return this.$store.state.userVaults
+      }
+    },
+    methods: {}
   }
-}
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     .clicker {
       cursor: pointer;
