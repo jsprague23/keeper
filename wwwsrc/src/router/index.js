@@ -3,11 +3,17 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Auth from '@/components/Auth'
 import ProfilePage from '@/components/ProfilePage'
+import Navbar from '@/components/Navbar'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/Navbar',
+      name:'Navbar',
+      component:Navbar
+    },
     {
       path:'/ProfilePage',
       name: 'ProfilePage',

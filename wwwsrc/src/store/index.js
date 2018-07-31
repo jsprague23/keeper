@@ -95,8 +95,7 @@ export default new vuex.Store({
         console.log(err)
       })
     },
-    getVaults({dispatch, commit,state}){
-      debugger
+    getVaults({dispatch, commit,state}){      
       api.get('/api/Vault'+ state.currentUser.id)
       .then(res =>{
         commit('setVaults', res.data)
