@@ -1,61 +1,65 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    
+    <div class="row">
+      <div class="col">
+        <h1>WELCOME TO KEEP COUNTRY!</h1>
+        <h3>Time to Wrangle Some Keeps Partner!</h3>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'Home',
+    data() {
+      return {
+
+      }
     }
   }
-}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-    .clicker {
-      cursor: pointer;
-      color: blue;
-      text-decoration: underline;
-    }
-  
-    html {
-      background: #a2792f;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-  
-    .jumbotron {
-      text-align: center;
-      background: #f7ca44;
-      margin-left: 5rem;
-      margin-right: 5rem;
-      margin-top: 5rem;
-      margin-bottom: auto;
-  
-  
-    }
-  
-  
-    .container-fluid {
-      background: #d5eeff;
-      background-size: cover;
-      margin: 0px;
-      height: 100%;
-      width: 100%;
-  
-    }
-  
-    .logoFont {
-      font-family: 'Caveat', cursive;
-    }
-  
-  </style>
-  
+  .clicker {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+
+  html {
+    background: #a2792f;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .jumbotron {
+    text-align: center;
+    background: #f7ca44;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    margin-bottom: auto;
+
+
+  }
+
+
+  .container-fluid {
+    background: #d5eeff;
+    background-size: cover;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .logoFont {
+    font-family: 'Caveat', cursive;
+  }
+
+</style>

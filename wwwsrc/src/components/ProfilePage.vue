@@ -74,8 +74,8 @@
 
   }
 
-  .logoFont {
+  /* .logoFont {
     font-family: 'Caveat', cursive;
-  }
+  }  */
 
 </style>

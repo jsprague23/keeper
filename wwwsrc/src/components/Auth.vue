@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid d-flex justify-content-center">
 <div class="jumbotron">
-  <h1>Keeper</h1>
+  <h1>Keeper Corral</h1>
   <div v-if="currentUser">
     You are already logged in, if you would like to visit your profile click the button at the top of the page or you can just click <router-link>Here</router-link>
   </div>

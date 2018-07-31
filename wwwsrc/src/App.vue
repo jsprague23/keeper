@@ -11,13 +11,17 @@ export default {
   name: 'App',
   components: {
     Navbar
+  },
+  mounted(){
+    this.$store.dispatch('authenticate')
+
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Caveat', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
