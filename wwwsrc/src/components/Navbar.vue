@@ -9,10 +9,9 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <router-link class="nav-item nav-link active" :to="{name:'Home'}">Home
-            <span class="sr-only">(current)</span>
           </router-link>
           <router-link class="nav-item nav-link disabled" href="#About">Features</router-link>
-          <router-link class="nav-item nav-link" :to="{name:'ProfilePage'}">Profile</router-link>
+          <router-link class="nav-item nav-link active" :to="{name:'ProfilePage'}">Profile</router-link>
           <div v-if="!currentUser.id">
             <router-link class="nav-item nav-link" :to="{name:'Auth'}">Login/Register</router-link>
           </div>
@@ -50,6 +49,11 @@
 </script>
 
 <style>
+  
+
+  button:hover{
+    background-color: #f7ca44;
+  }
   .navbar {
     font-family: 'Jura', sans-serif;
     font-weight: bold;
@@ -61,7 +65,9 @@
     /* Position the navbar at the top of the page */
     width: 100%;
     /* Full width */
-    box-shadow: #000000
+    box-shadow: #000000;
+    color: #a2792f;
+    background-color:#d5eeff;
   }
 
 .navbar a {
@@ -82,7 +88,7 @@
   }
   .button {
     margin-left: 1rem;
-    background-color: #f7ca44;
+    background-color: white;
     border:#5c3c10 solid .1rem;
   }
 

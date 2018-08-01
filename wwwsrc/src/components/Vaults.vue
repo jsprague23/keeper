@@ -96,7 +96,7 @@
   }
 
   html {
-    background: #a2792f;
+    background: #d5eeff;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

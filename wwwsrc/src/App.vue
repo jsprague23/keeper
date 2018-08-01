@@ -21,11 +21,12 @@ export default {
 
 <style>
 #app {
-  font-family: 'Caveat', cursive;
+  font-family: 'Jura', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color:  #a2792f;;
   margin-top: 60px;
+  background-color: #d5eeff;
 }
 </style>
