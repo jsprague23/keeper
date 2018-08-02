@@ -5,11 +5,17 @@ import Auth from '@/components/Auth'
 import ProfilePage from '@/components/ProfilePage'
 import Navbar from '@/components/Navbar'
 import Vaults from '@/components/Vaults'
+import Modal from '@/components/Modal'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/Modal',
+      name:'Modal',
+      component: Modal
+    },
     {
       path:'/Vaults',
       name:'Vaults',
