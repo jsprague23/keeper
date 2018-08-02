@@ -6,11 +6,17 @@ import ProfilePage from '@/components/ProfilePage'
 import Navbar from '@/components/Navbar'
 import Vaults from '@/components/Vaults'
 import Modal from '@/components/Modal'
+import PublicKeeps from '@/components/PublicKeeps'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/PublicKeeps',
+      name:'PublicKeeps',
+      component:PublicKeeps
+    },
     {
       path:'/Modal',
       name:'Modal',
