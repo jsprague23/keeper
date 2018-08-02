@@ -30,10 +30,12 @@
         return this.$store.state.currentUser
       },
       userVaults() {
-        return this.$store.state.userVaults
+        return this.$store.state.Vaults
       }
     },
-    methods: {}
+    methods: {
+
+    }
   }
 
 </script>

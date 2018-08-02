@@ -25,7 +25,7 @@ export default new vuex.Store({
     currentUser: {},
     Vaults: [],
     Keeps: [],
-    userKeeps: [],
+    userVaults: [],
     vaultKeeps: [],
     activeVault: {},
     activeKeep: {}
@@ -55,11 +55,12 @@ export default new vuex.Store({
         })
       })
     },
-    logout({commit, dispatch}){
-      Account.delete('/logout')
+    logout({commit, dispatch,state}){
+      Account.delete('/logout'+state.currentUser.id)
       .then(res=>{
         console.log("You done logged out")
         commit('deleteUser', res.data)
+        router.push({name: 'Auth'})
       })
     },
     register({commit, dispatch},userData){
@@ -71,7 +72,7 @@ export default new vuex.Store({
         })
       })
     },
-    authenticate({commit, dispatch}){
+    authenticate({commit, dispatch}){      
       Account.get('/authenticate')
       .then(res => {
         console.log("Yep, this cowboy is a straight shooter")
@@ -95,11 +96,10 @@ export default new vuex.Store({
         console.log(err)
       })
     },
-    getVaults({dispatch, commit,state}){      
+    getVaults({dispatch, commit,state}){
       api.get('/api/Vault'+ state.currentUser.id)
-      .then(res =>{
+      .then(res =>{        
         commit('setVaults', res.data)
-        dispatch("getVaults")
       })
     },
     deleteVault({commit,dispatch},id){

@@ -10,7 +10,6 @@
             <h3 class="card-title logoFont clicker">{{Vaults.name}}</h3>
           </router-link>
           <div class="card-body">
-            <h5 class="logoFont">Description:</h5>
             <h3 class="logoFont font-weight-bold">Description:</h3>
             <h4 class="logoFont font-weight-light ">{{Vaults.Description}}</h4>
             <h3 class="logoFont font-weight-bold">Corral Author:</h3>
@@ -35,7 +34,6 @@
               </form>
             </div>
           </modal>
-
         </div>
       </div>
     </div>

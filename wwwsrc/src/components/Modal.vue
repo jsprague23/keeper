@@ -22,7 +22,7 @@
   
   <script>
     export default {
-      name: 'modal-component',
+      name: 'Modal',
       props: ['toggle'],
       data(){
         return {
