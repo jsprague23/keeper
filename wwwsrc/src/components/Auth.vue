@@ -31,7 +31,7 @@
 
 <script>
   export default {
-    name: '',
+    name: 'Auth',
     data() {
       return {
         logister: false,
@@ -46,6 +46,9 @@
         }
 
       }
+    },
+    mounted(){
+      this.$store.dispatch('authenticate')
     },
     computed: {
       currentUser(){

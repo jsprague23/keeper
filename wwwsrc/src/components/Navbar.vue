@@ -1,21 +1,17 @@
 <template>
   <div class="Navbar">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <router-link class="nav-item nav-link" :to="{name:'Home'}">Keeper Corral</router-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+        <div class="navbar navbar-nav">
+            <router-link class="nav-item nav-link active" :to="{name:'Home'}">Keeper Corral</router-link>
           <router-link class="nav-item nav-link active" :to="{name:'Home'}">Home
           </router-link>
-          <router-link class="nav-item nav-link disabled" href="#About">Features</router-link>
+          <!-- <a class="nav-item nav-link disabled" href="#About">Features</a> -->
           <router-link class="nav-item nav-link active" :to="{name:'ProfilePage'}">Profile</router-link>
-          <div v-if="!currentUser.id">
+          <div v-if="!currentUser">
             <router-link class="nav-item nav-link" :to="{name:'Auth'}">Login/Register</router-link>
           </div>
-          <button class="button" v-if="currentUser.id" @click="logout">Logout</button>
+          <button class="button" v-if="currentUser" @click="logout">Logout</button>
         </div>
       </div>
     </nav>
