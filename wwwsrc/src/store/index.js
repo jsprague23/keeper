@@ -146,11 +146,20 @@ export default new vuex.Store({
 
       })
     },
-    // createVaultKeep({commit,dispatch,state},vaultKeep{
-      
-    // })
-    getVaultKeeps({commit},currentUser){
-      api.get('/api/VaultKeeps/'+currentUser.id)
+    createVaultKeep({commit,dispatch,state},vaultKeep){
+      api.post('/vaultKeeps', vaultKeep)
+      .then(res=>{
+        vaultKeep.keep.keepCount++;
+        dispatch('editKeep', vaultKeep.keep);
+        commit("setVaultKeeps", res.data)
+      })
+      .catch(err =>{
+        console.log(err)
+      })
+     
+    },
+    getVaultKeeps({commit},){
+      api.get('/api/VaultKeeps/')
       .then(res=>{
         commit('setUserKeeps', res.data)
       })
