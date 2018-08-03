@@ -93,23 +93,14 @@ namespace UserController
       return "You done messed up";
     }
 
-    [Authorize]
-    [HttpGet("keeps")]
-    public IEnumerable<Vault> GetUserVaults(){
-      var user =HttpContext.User.Identity.Name;
-      return _db.GetUserVaults(user);
-    }
-
-    [Authorize]
-    [HttpPost("keeps/{keepId}")]
-    public string AddKeep(int keepId)
+   [Authorize]
+    [HttpDelete("{id}")]
+    public async Task<string> Logout()
     {
-      bool success = _db.AddKeep(keepId, HttpContext.User.Identity.Name);
-      if(success){
-        return "Keep Added!";
-      }
-      return "failed to add keep";
+      await HttpContext.SignOutAsync();
+      return "You're riding off into the sunset";
     }
+    
   }
 
 }

@@ -78,7 +78,7 @@
         this.$store.dispatch('editKeep', Keep)
       },
       addVaultKeep(Keep) {
-        keep.keepCount++
+        keep.KeepCount++
         this.$store.dispatch('editKeep',Keep)
         this.$store.dispatch('createVaultKeep',{
           KeepId: keep.id,

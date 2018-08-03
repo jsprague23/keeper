@@ -53,10 +53,11 @@ export default new vuex.Store({
         router.push({
           name:'Home'
         })
+        dispatch("getVaults")
       })
     },
     logout({commit, dispatch,state}){
-      Account.delete('/logout'+state.currentUser.id)
+      Account.delete('/logout/'+state.currentUser.id)
       .then(res=>{
         console.log("You done logged out")
         commit('deleteUser', res.data)
@@ -77,12 +78,13 @@ export default new vuex.Store({
       .then(res => {
         console.log("Yep, this cowboy is a straight shooter")
         commit('setUser', res.data)
+        dispatch("getVaults")
       })
     },
-    activeVault({commit, dispatch,state}, Vault){
+    activeVault({commit}, Vault){
       commit("setActiveVault", Vault)
     },
-    activeKeep({commit, dispatch, state}, Keep){
+    activeKeep({commit}, Keep){
       commit("setActiveKeep", Keep)
     },
     createVault({commit,dispatch,state}, Vault){
@@ -97,15 +99,61 @@ export default new vuex.Store({
       })
     },
     getVaults({dispatch, commit,state}){
-      api.get('/api/Vault'+ state.currentUser.id)
+      api.get('/api/Vault/userId/'+ state.currentUser.id)
       .then(res =>{        
         commit('setVaults', res.data)
       })
     },
     deleteVault({commit,dispatch},id){
-      api.delete('/api/Vault'+ id)
+      api.delete('/api/Vault/'+ id)
       commit('setVaults')
       dispatch('getVaults')
+    },
+    createKeep({dispatch, commit},Keep){
+      api.post('/api/Keep', Keep)
+      .then(res=>{
+        dispatch("getKeeps",res.data)
+        commit('setKeeps')
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    },
+    getKeeps({commit}){
+      api.get('/api/Keep')
+      .then(res=>{
+        commit('setKeeps',res.data)
+      })
+      .catch(err=> {
+        console.log(err)
+      })
+    },
+    editKeep({dispatch, commit, state},keep){
+      api.put('/api/Keep/'+ keep.id)
+      .then(res=> {
+        console.log(res)
+        commit('setKeeps')
+        dispatch('getKeeps')
+      })
+    },
+    deleteKeep({dispatch,commit},id){
+      api.delete('/api/Keeps/'+id)
+      .then(dk=>{
+        dispatch('getKeeps')
+      })
+      .catch(err =>{
+        console.log(err,"something done gone wrong")
+
+      })
+    },
+    // createVaultKeep({commit,dispatch,state},vaultKeep{
+      
+    // })
+    getVaultKeeps({commit},currentUser){
+      api.get('/api/VaultKeeps/'+currentUser.id)
+      .then(res=>{
+        commit('setUserKeeps', res.data)
+      })
     }
     
   }
