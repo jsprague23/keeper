@@ -16,15 +16,33 @@
             <h5>Description:{{VaultKeep.description}}</h5>
             <h5>Views:{{VaultKeep.views}}</h5>
             <h5>Wrangles:{{VaultKeep.keepCount}}</h5>
-            <select @click="editKeep(Keep)" v-model="privacy">
+            <select @click="editKeep(Keep)" v-model="selected">
               <option v-for="option in options" v-bind:value="option.value">
                 {{option.text}}
               </option>
             </select>
             <span>Selected: {{selected}}</span>
           </div>
-
+          <button class="btn btn-danger" @click="deleteKeep">Delete</button>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button @click="toggleModal(1)">Create a Keep</button>
+        <modal :toggle="showModal">
+            <div slot="header">
+              <h3>Create Keep</h3>
+            </div>
+            <div>
+              <form @submit.prevent="createKeep">
+                <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
+                <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
+                <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
+                <button type="submit">Create Keep</button>
+              </form>
+            </div>
+          </modal>
       </div>
     </div>
   </div>
@@ -35,20 +53,69 @@
   export default {
     name: 'VaultDetails',
     data() {
-      selected:'Public'
-      options:[
-        {text: 'Public', value: 'public'},
-        {text: 'Private', value:'private'}
+      selected: 'Public'
+      options: [{
+          text: 'Public',
+          value: 'public'
+        },
+        {
+          text: 'Private',
+          value: 'private'
+        }
       ]
       return {
-
+        showModal:0,
+        newKeep:{
+          name:'',
+          Image:'',
+          Description:'',
+        }
       }
     },
-    components:{
+    components: {
       Modal
     },
-    computed: {},
-    methods: {}
+    mounted(){
+      this.$store.dispatch("getVaultKeeps", this.$route.params.id)
+      this.$store.dispatch("activeVault")
+    },
+    computed: {
+      Keeps(){
+        this.$store.state.Keeps
+      },
+      Vaults(){
+        return this.$store.state.Vaults
+      },
+      VaultKeeps(){
+        return this.$store.state.userKeeps
+      },
+      activeVault(){
+        return this.$store.state.activeVault
+      },
+      currentUser() {
+        return this.$store.state.currentUser
+      }
+    },
+    methods: {
+      views(Keeps){
+        keep.views++
+        this.$store.dispatch('editKeep',keep)
+      },
+      deleteKeep(id){
+        this.$store.dispatch('deleteKeep',id)
+      },
+      createKeep(){
+        this.$store.dispatch('createKeep',this.newKeep)
+      },
+      toggleModal(n){
+        this.showModal +=n
+      },
+      addKeep(Keep){
+        Keep.keepCount++
+        this.$store.dispatch('editKeep', id)
+        this.$store.dispatch('createVaultKeep', {KeepId: keep.id, VaultId:this.vaultId, UserId: currentUser.id})
+      }
+    }
   }
 
 </script>
