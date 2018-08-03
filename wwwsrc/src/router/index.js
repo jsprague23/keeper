@@ -7,11 +7,23 @@ import Navbar from '@/components/Navbar'
 import Vaults from '@/components/Vaults'
 import Modal from '@/components/Modal'
 import PublicKeeps from '@/components/PublicKeeps'
+import KeepDetails from '@/components/KeepDetails'
+import VaultDetails from '@/components/VaultDetails'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: 'VaultDetails',
+      name:'VaultDetails',
+      component:VaultDetails
+    },
+    {
+      path: '/KeepDetails',
+      name:'KeepDetails',
+      component: KeepDetails
+    },
     {
       path:'/PublicKeeps',
       name:'PublicKeeps',
