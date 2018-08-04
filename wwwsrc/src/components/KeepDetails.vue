@@ -45,14 +45,14 @@
       },
       activeKeep(){
         this.$store.state.activeKeep
-      },
-      editKeep(id){
-        this.$store.dispatch('editKeep',id)
       }
     },
     methods: {
       deleteKeep(id){
         this.$store.dispatch('deleteKeep', id)
+      },
+      editKeep(id){
+        this.$store.dispatch('editKeep',id)
       }
     }
   }

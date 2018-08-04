@@ -6,16 +6,18 @@
         <h3>Time to Wrangle Some Keeps Partner!</h3>
       </div>
     </div>
+    <div class="row">
+      <PublicKeeps></PublicKeeps>
+    </div>
   </div>
 </template>
 
 <script>
+  import PublicKeeps from './PublicKeeps'
   export default {
     name: 'Home',
-    data() {
-      return {
-
-      }
+    components: {
+      PublicKeeps
     }
   }
 
@@ -30,7 +32,8 @@
   }
 
   html {
-    background: #d5eeff;;
+    background: #d5eeff;
+    ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

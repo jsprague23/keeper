@@ -30,6 +30,7 @@
                 <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
+                <input type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.checked">
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -52,7 +53,8 @@
         newKeep:{
           name:'',
           Image:'',
-          Description:''
+          Description:'',
+          checked:[]
         }
 
       }
@@ -71,6 +73,9 @@
       currentUser(){
         return this.$store.state.currentUser
       }
+    },
+    components:{
+      Modal
     },
     methods: {
       views(Keep){
