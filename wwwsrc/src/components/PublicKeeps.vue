@@ -34,7 +34,6 @@
                 <button type="submit">Create Keep</button>
               </form>
             </div>
-
           </modal>
         </div>
       </div>
@@ -98,7 +97,7 @@
       toggleModal(n){
         this.showModal +=n
       },
-      activeKeep(Keep){
+      activeKeep(Keep){        
         this.$store.dispatch('activeKeep', Keep)
       }
     }
