@@ -61,7 +61,7 @@
     },
     mounted(){
       this.$store.dispatch("getKeeps")
-      
+      this.$store.dispatch("getVaults")
     },
     computed: {
       Keeps() {
@@ -83,9 +83,8 @@
         this.$store.dispatch('editKeep', Keep)
       },
       addVaultKeep(Keep) {
-        keep.KeepCount++
         this.$store.dispatch('createVaultKeep',{
-          KeepId: keep.id,
+          KeepId: Keep.id,
           VaultId: this.vaultId,
           UserId: this.currentUser.id
         })

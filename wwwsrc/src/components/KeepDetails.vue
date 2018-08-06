@@ -39,6 +39,9 @@
 
       }
     },
+    mounted(){
+      this.$store.state.activeKeep
+    },
     computed: {
       currentUser(){
         return this.$store.state.currentUser

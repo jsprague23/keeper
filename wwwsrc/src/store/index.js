@@ -157,7 +157,7 @@ export default new vuex.Store({
       })
     },
     createVaultKeep({commit,dispatch,state},vaultKeep){
-      api.post('/vaultKeeps', vaultKeep)
+      api.post('/api/vaultKeeps', vaultKeep)
       .then(res=>{
         vaultKeep.keep.keepCount++;
         dispatch('editKeep', vaultKeep.keep);
