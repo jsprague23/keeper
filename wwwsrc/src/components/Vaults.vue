@@ -4,16 +4,18 @@
       <div class="jumbotron logoFont">
         <h1> Your Corrals</h1>
       </div>
-      <div class="card-columns">
-        <div class="card Vault in Vaults">
-          <router-link @click.native="activeVault(Vault)" :to "{name: 'VaultDetails', params:{id: Vaults.id}">
-            <h3 class="card-title logoFont clicker">{{Vaults.name}}</h3>
-          </router-link>
-          <div class="card-body">
-            <h3 class="logoFont font-weight-bold">Description:</h3>
-            <h4 class="logoFont font-weight-light ">{{Vaults.Description}}</h4>
-            <h3 class="logoFont font-weight-bold">Corral Author:</h3>
-            <h3 class="logoFont font-italic font-weight-bold">{{currentUser.name}}</h3>
+      <div class="row">
+        <div class="card-columns">
+          <div class="card" v-for="Vault in Vaults" :key="Vault.id">
+            <router-link @click.native="activeVault(Vault)" :to="{name: 'VaultDetails', params:{id: Vault.id}">
+              <h3 class="card-title logoFont clicker">{{Vault.name}}</h3>
+            </router-link>
+            <div class="card-body">
+              <h3 class="logoFont font-weight-bold">Description:</h3>
+              <h4 class="logoFont font-weight-light ">{{Vault.Description}}</h4>
+              <h3 class="logoFont font-weight-bold">Corral Author:</h3>
+              <h3 class="logoFont font-italic font-weight-bold">{{currentUser.name}}</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -54,10 +56,7 @@
 
       }
     },
-    mounted() {
-      this.$store.dispatch("getVaults")
-    },
-    components: {
+   components: {
       Modal
     },
     computed: {
@@ -74,6 +73,7 @@
       },
       createVault() {
         this.$store.dispatch('createVault', this.newVault)
+        this.toggleModal(-1)
       },
       toggleModal(n) {
         this.showModal += n

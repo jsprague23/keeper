@@ -9,9 +9,9 @@
         <h4 class="logoFont">Views: {{Keep.views}}</h4>
         <h4 class="logoFont">Wrangles: {{Keep.keepCount}}</h4>
         <img :src="Keep.image">
-        <select @click="addVaultKeep(Keep)" v-model="vaultId">
+        <select v-model="vaultId">
           <option disabled>Select a Corral</option>
-          <option v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
+          <option  @click="addVaultKeep(Keep)" v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
         </select>
         <span>Selected: {{vaultId}}</span>
         <button @click="addVaultKeep(Keep)">Add to Corral</button>
@@ -95,7 +95,7 @@
       },
       activeKeep(Keep) {
         Keep.views++
-          this.$store.dispatch('editKeep', Keep)
+        this.$store.dispatch('editKeep', Keep)
         this.$store.dispatch('activeKeep', Keep)
       }
     }

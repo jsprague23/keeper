@@ -2,7 +2,7 @@
   <div class="VaultDetails">
     <div class="row">
       <div class="col justify-content-center">
-        <h1>Vault Details for {{activeVault.vault.id}}</h1>
+        <h1>Vault Details for {{activeVault.id}}</h1>
       </div>
     </div>
     <div class="row">

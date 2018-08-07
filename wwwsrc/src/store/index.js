@@ -83,11 +83,11 @@ export default new vuex.Store({
         })
       })
     },
-    authenticate({commit, dispatch}){      
+    authenticate({commit, dispatch}){
       Account.get('/authenticate')
       .then(res => {
         console.log("Yep, this cowboy is a straight shooter")
-        commit('setUser', res.data)
+        commit('setUser', res.data)        
         dispatch("getVaults")
       })
     },
@@ -102,6 +102,7 @@ export default new vuex.Store({
       api.post("/api/Vault", Vault)      
       .then(res => {
         commit("setVaults", res.data)
+        dispatch("getVaults")
         router.push({name:"VaultDetails"})
       })
       .catch(err =>{

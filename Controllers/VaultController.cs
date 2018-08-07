@@ -29,9 +29,9 @@ namespace UserController
     }
     [Authorize]
     [HttpGet("userId/{id}")]
-    public IEnumerable<Vault> GetByUserId(string UserId)
+    public IEnumerable<Vault> GetByUserId(string id)
     {
-      return _db.GetByUserId(UserId);
+      return _db.GetByUserId(id);
     }
 
     [Authorize]
