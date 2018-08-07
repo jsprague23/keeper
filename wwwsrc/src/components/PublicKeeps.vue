@@ -2,7 +2,7 @@
   <div class="Keeps container-fluid d-flex justify-content-center">
     <div class="row">
       <div v-if="Keep.publicKeep=true" v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link @click.native="activeKeep(Keep)" :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="views">
+        <router-link @click.native="activeKeep(Keep)" :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="activeKeep">
           <h2 class="card-title titles">{{Keep.name}}</h2>
         </router-link>
         <h4 class="logoFont">Description: {{Keep.description}}</h4>
@@ -47,18 +47,18 @@
     name: 'PublicKeeps',
     data() {
       return {
-        vaultId:'',
-        showModal:0,
-        newKeep:{
-          name:'',
-          Image:'',
-          Description:'',
-          checked:[]
+        vaultId: '',
+        showModal: 0,
+        newKeep: {
+          name: '',
+          Image: '',
+          Description: '',
+          checked: []
         }
 
       }
     },
-    mounted(){
+    mounted() {
       this.$store.dispatch("getKeeps")
       this.$store.dispatch("getVaults")
     },
@@ -69,35 +69,33 @@
       Vaults() {
         return this.$store.state.Vaults
       },
-      currentUser(){
+      currentUser() {
         return this.$store.state.currentUser
       }
     },
-    components:{
+    components: {
       Modal
     },
     methods: {
-      views(Keep){
-        Keep.views++
-        this.$store.dispatch('editKeep', Keep)
-      },
       addVaultKeep(Keep) {
-        this.$store.dispatch('createVaultKeep',{
+        this.$store.dispatch('createVaultKeep', {
           KeepId: Keep.id,
           VaultId: this.vaultId,
           UserId: this.currentUser.id
         })
-        this.$store.dispatch('editKeep',Keep)
+        this.$store.dispatch('editKeep', Keep)
 
       },
       createKeep() {
         this.$store.dispatch('createKeep', this.newKeep)
         this.toggleModal(-1)
       },
-      toggleModal(n){
-        this.showModal +=n
+      toggleModal(n) {
+        this.showModal += n
       },
-      activeKeep(Keep){        
+      activeKeep(Keep) {
+        Keep.views++
+          this.$store.dispatch('editKeep', Keep)
         this.$store.dispatch('activeKeep', Keep)
       }
     }

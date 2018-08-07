@@ -48,6 +48,7 @@
       },
       activeKeep(){
         this.$store.state.activeKeep
+        
       }
     },
     methods: {
