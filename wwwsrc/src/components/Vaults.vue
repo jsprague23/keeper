@@ -7,7 +7,7 @@
       <div class="row">
         <div class="card-columns">
           <div class="card" v-for="Vault in Vaults" :key="Vault.id">
-            <router-link @click.native="activeVault(Vault)" :to="{name: 'VaultDetails', params:{id: Vault.id}">
+            <router-link @click.native="activeVault(Vault)" :to="{name: 'VaultDetails', params:{id: Vault.id}}">
               <h3 class="card-title logoFont clicker">{{Vault.name}}</h3>
             </router-link>
             <div class="card-body">
