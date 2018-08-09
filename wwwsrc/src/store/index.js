@@ -91,21 +91,23 @@ export default new vuex.Store({
         // dispatch("getVaults")
       })
     },
-    activeVault({commit}, Vault){
+    activeVault({commit, state}, Vault){
       commit("setActiveVault", Vault)
+      
     },
     activeKeep({commit,dispatch,state}, Keep){      
       commit("setActiveKeep", Keep)
       dispatch("getKeeps", Keep.id)
+      Keep.views=state.activeKeep.views++
       
       // router.push({name:"KeepDetails", params:{id:Keep.id}})
     },    
-    createVault({commit,dispatch,state}, Vault){
-      
+    createVault({commit,dispatch,state}, Vault){      
       api.post("/api/Vault", Vault)      
       .then(res => {
         commit("setVaults", res.data)
         dispatch("getVaults")
+        commit("setActiveVault", Vault)
         router.push({name:"VaultDetails", params: {id:Vault.id}})
       })
       .catch(err =>{
@@ -199,7 +201,7 @@ export default new vuex.Store({
      
     },
     getVaultKeeps({commit, state},){
-      api.get('/api/VaultKeeps/'+ state.currentUser.id)
+      api.get('/api/VaultKeeps/'+ state.activeVault.id)
       .then(res=>{
         commit('setVaultKeeps', res.data)
       })

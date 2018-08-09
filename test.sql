@@ -23,7 +23,7 @@
 --     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     publicKeep BOOLEAN NOT NULL,
+--     publicKeep BOOLEAN NOT NULL DEFAULT PRIVATE,
 --     image VARCHAR(255),
 --     views int (255) NOT NULL,
 --     keepCount int (255) NOT NULL,

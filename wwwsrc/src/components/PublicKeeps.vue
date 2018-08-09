@@ -2,7 +2,7 @@
   <div class="Keeps container-fluid d-flex justify-content-center">
     <div class="row">
       <div v-if="Keep.publicKeep=true" v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="activeKeep(Keep)">
+        <router-link :to="{name: 'KeepDetails', params:{keepId: Keep.id}}" @click="activeKeep(Keep)">
           <h2 class="card-title titles">{{Keep.name}}</h2>
         </router-link>
         <h4 class="logoFont">Description: {{Keep.description}}</h4>
@@ -44,6 +44,7 @@
 
 <script>
   import Modal from './Modal'
+  import Router from '../router'
   export default {
     name: 'PublicKeeps',
     data() {
@@ -101,10 +102,11 @@
         this.showModal += n
       },
       activeKeep(Keep) {
-        debugger
         Keep.views++
         this.$store.dispatch('getKeepById', Keep)
         this.$store.dispatch('editKeep', Keep)
+        router.push({name: ""})
+
       }
     }
   }

@@ -24,6 +24,7 @@
 <script>
   export default {
     name: 'KeepDetails',
+    props: ['keepId'],
     data() {
       selected: 'Public'
       options: [{
@@ -47,7 +48,7 @@
         return this.$store.state.currentUser
       },
       activeKeep(){
-        this.$store.state.activeKeep
+        return this.$store.state.activeKeep.find(k=> k.id == this.keepId)
         
       }
     },
