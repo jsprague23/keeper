@@ -160,6 +160,13 @@ export default new vuex.Store({
         router.push({name: 'KeepDetails', params:{id: res.data.id}})
       })
     },
+    getKeepsByUserId({commit, dispatch, state}){
+      api.get('/api/keep/user/'+ state.currentUser.id)
+      .then(res=>{
+        commit('setKeeps', res.data)
+        console.log(res)
+      })
+    },
     editKeep({dispatch, commit},keep){
       api.put('/api/Keep/'+ keep.id, keep)
       .then(res=> {
