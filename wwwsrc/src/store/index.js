@@ -67,10 +67,10 @@ export default new vuex.Store({
       })
     },
     logout({commit, dispatch,state}){
-      Account.delete('/logout/'+state.currentUser.id)
+      Account.delete('/'+state.currentUser.id)
       .then(res=>{
         console.log("You done logged out")
-        commit('deleteUser', res.data)
+        commit('setUser', {})
         router.push({name: 'Auth'})
       })
     },

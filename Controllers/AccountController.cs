@@ -93,7 +93,7 @@ namespace UserController
       return "You done messed up";
     }
 
-   [Authorize]
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<string> Logout()
     {
