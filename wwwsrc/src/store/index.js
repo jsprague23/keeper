@@ -88,31 +88,44 @@ export default new vuex.Store({
       .then(res => {
         console.log("Yep, this cowboy is a straight shooter")
         commit('setUser', res.data)        
-        dispatch("getVaults")
+        // dispatch("getVaults")
       })
     },
     activeVault({commit}, Vault){
       commit("setActiveVault", Vault)
     },
-    activeKeep({commit}, Keep){      
+    activeKeep({commit,dispatch,state}, Keep){      
       commit("setActiveKeep", Keep)
-    },
+      dispatch("getKeeps", Keep.id)
+      
+      // router.push({name:"KeepDetails", params:{id:Keep.id}})
+    },    
     createVault({commit,dispatch,state}, Vault){
       
       api.post("/api/Vault", Vault)      
       .then(res => {
         commit("setVaults", res.data)
         dispatch("getVaults")
-        router.push({name:"VaultDetails"})
+        router.push({name:"VaultDetails", params: {id:Vault.id}})
       })
       .catch(err =>{
         console.log(err)
       })
     },
-    getVaults({dispatch, commit,state}){
+    getVaults({dispatch, commit,state}){      
       api.get('/api/Vault/userId/'+ state.currentUser.id)
       .then(res =>{        
         commit('setVaults', res.data)
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    },
+    getVaultById({dispatch, commit, state}, Vault){
+      api.get('/api/Vault/'+ Vault.id)
+      .then(res=>{
+        console.log(res)
+        commit('setActiveVault', res.data)
       })
     },
     deleteVault({commit,dispatch},id){
@@ -139,11 +152,19 @@ export default new vuex.Store({
         console.log(err)
       })
     },
+    getKeepById({commit, dispatch, state}, Keep){
+      api.get('/api/keep/'+ Keep.id)
+      .then(res=>{
+        commit('setActiveKeep', res.data)
+        console.log(res)      
+        router.push({name: 'KeepDetails', params:{id: res.data.id}})
+      })
+    },
     editKeep({dispatch, commit},keep){
       api.put('/api/Keep/'+ keep.id, keep)
       .then(res=> {
         console.log(res)
-        commit('setKeeps')
+        commit('setKeeps', res.data)
         dispatch('getKeeps')
       })
     },

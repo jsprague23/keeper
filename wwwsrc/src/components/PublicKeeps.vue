@@ -2,7 +2,7 @@
   <div class="Keeps container-fluid d-flex justify-content-center">
     <div class="row">
       <div v-if="Keep.publicKeep=true" v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link @click.native="activeKeep(Keep)" :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="activeKeep">
+        <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="activeKeep(Keep)">
           <h2 class="card-title titles">{{Keep.name}}</h2>
         </router-link>
         <h4 class="logoFont">Description: {{Keep.description}}</h4>
@@ -30,7 +30,8 @@
                 <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
-                <input type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.checked">Public</input>
+                <br>
+                <input type="checkbox" placeholder="Public" id="checkbox" @click="" >Public</input>
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -63,6 +64,7 @@
       this.$store.dispatch("getVaults")
     },
     computed: {
+      
       Keeps() {
         return this.$store.state.Keeps
       },
@@ -90,13 +92,19 @@
         this.$store.dispatch('createKeep', this.newKeep)
         this.toggleModal(-1)
       },
+      publicKeep(Keep){
+        Keep.public=!Keep.public
+        this.$store.dispatch('editKeep', Keep)
+
+      },
       toggleModal(n) {
         this.showModal += n
       },
       activeKeep(Keep) {
+        debugger
         Keep.views++
+        this.$store.dispatch('getKeepById', Keep)
         this.$store.dispatch('editKeep', Keep)
-        this.$store.dispatch('activeKeep', Keep)
       }
     }
   }

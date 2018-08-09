@@ -12,15 +12,15 @@ namespace UserRepository
     {
 
     }
-    public VaultKeeps CreateVaultKeep(VaultKeeps newVaultKeep)
+    public VaultKeeps CreateVaultKeep(VaultKeeps VaultKeep)
     {
       int id = _db.ExecuteScalar<int>(@"
                 INSERT INTO vaultKeeps (userId, vaultId, keepId)
-                VALUES (@UserId, @VaultId, @KeepId)
+                VALUES (@UserId, @VaultId, @KeepId);
                 SELECT LAST_INSERT_ID();
-                ", newVaultKeep);
-    newVaultKeep.Id = id;
-    return newVaultKeep;
+                ", VaultKeep);
+    VaultKeep.Id = id;
+    return VaultKeep;
     }
     public IEnumerable<VaultKeeps> GetByUserId(string id)
     {

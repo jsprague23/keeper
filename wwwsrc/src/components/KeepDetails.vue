@@ -40,7 +40,7 @@
       }
     },
     mounted(){
-      this.$store.state.activeKeep
+      this.$store.dispatch('activeKeep')
     },
     computed: {
       currentUser(){
