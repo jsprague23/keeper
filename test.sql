@@ -23,7 +23,7 @@
 --     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     publicKeep BOOLEAN NOT NULL DEFAULT PRIVATE,
+--     publicKeep TINYINT NOT NULL DEFAULT 0,
 --     image VARCHAR(255),
 --     views int (255) NOT NULL,
 --     keepCount int (255) NOT NULL,
@@ -62,4 +62,4 @@
 -- USE THIS LINE FOR GET KEEPS BY VAULTID
 -- SELECT * FROM vaultkeeps vk
 -- INNER JOIN keeps k ON k.id = vk.keepId 
--- WHERE (vaultId = 2)
+-- WHERE (vaultId = @id)
