@@ -15,13 +15,7 @@
             <img :src="VaultKeep.image">
             <h5>Description:{{VaultKeep.description}}</h5>
             <h5>Views:{{VaultKeep.views}}</h5>
-            <h5>Wrangles:{{VaultKeep.keepCount}}</h5>
-            <select @click="editKeep(Keep)" v-model="selected">
-              <option v-for="option in options" v-bind:value="option.value">
-                {{option.text}}
-              </option>
-            </select>
-            <span>Selected: {{selected}}</span>
+            <h5>Wrangles:{{VaultKeep.keepCount}}</h5>            
           </div>
           <button class="btn btn-danger" @click="deleteKeep">Delete</button>
         </div>
@@ -40,7 +34,12 @@
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
                 <br>
-                <input type="checkbox" placeholder="Public" id="checkbox" @click="" >Public</input>
+                <div id="checkboxes">
+                    <label>Public</label>
+                  <input value="1" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep">
+                  <label>Private</label>
+                  <input value="0" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep">
+                </div>
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -55,23 +54,13 @@
   export default {
     name: 'VaultDetails',
     data() {
-      selected: 'Public'
-      options: [{
-          text: 'Public',
-          value: 'public'
-        },
-        {
-          text: 'Private',
-          value: 'private'
-        }
-      ]
       return {
         showModal:0,
         newKeep:{
           name:'',
           Image:'',
           Description:'',
-          Checked:[]
+          publicKeep: []
         }
       }
     },
@@ -109,14 +98,10 @@
       },
       createKeep(){
         this.$store.dispatch('createKeep',this.newKeep)
+        this.toggleModal(-1)
       },
       toggleModal(n){
         this.showModal +=n
-      },
-      addKeep(Keep){
-        Keep.keepCount++
-        this.$store.dispatch('editKeep', id)
-        this.$store.dispatch('createVaultKeep', {KeepId: keep.id, VaultId:this.vaultId, UserId: currentUser.id})
       }
     }
   }

@@ -135,7 +135,7 @@ export default new vuex.Store({
       commit('setVaults')
       dispatch('getVaults')
     },
-    createKeep({dispatch, commit},Keep){
+    createKeep({dispatch, commit},Keep){      
       api.post('/api/Keep', Keep)
       .then(res=>{
         dispatch("getKeeps",res.data)

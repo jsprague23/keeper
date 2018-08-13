@@ -15,7 +15,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: 'VaultDetails',
+      path: '/VaultDetails/:vaultId',
       name:'VaultDetails',
       component:VaultDetails
     },
