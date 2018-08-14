@@ -1,8 +1,9 @@
 <template>
   <div class="Keeps container-fluid d-flex justify-content-center">
     <div class="row">
-      <div v-if="Keep.publicKeep==true" v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link :to="{name: 'KeepDetails', params:{keepId: Keep.id}}" @click="activeKeep(Keep)">
+        <!-- v-if="Keep.publicKeep==true"  -->
+      <div v-for="Keep in Keeps" class="col" :key="Keep.id">
+        <router-link :to="{name: 'KeepDetails', params:{KeepId: Keep.id}}" @click="activeKeep(Keep)">
           <h2 class="card-title titles">{{Keep.name}}</h2>
         </router-link>
         <h4 class="logoFont">Description: {{Keep.description}}</h4>
@@ -31,12 +32,12 @@
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
                 <br>
-                <div id="checkboxes">
+                <!-- <div id="checkboxes">
                   <label>Public</label>
-                <input value="1" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep">
+                <input value="true" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep">
                 <label>Private</label>
-                <input value="0" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep">
-              </div>
+                <input value="false" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep">
+              </div> -->
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -49,8 +50,7 @@
 
 <script>
   import Modal from './Modal'
-  import Router from '../router'
-  export default {
+    export default {
     name: 'PublicKeeps',
     data() {
       return {
@@ -60,7 +60,7 @@
           name: '',
           Image: '',
           Description: '',
-          publicKeep: []
+          // publicKeep: []
         },
         // props:{
         //   Public:{

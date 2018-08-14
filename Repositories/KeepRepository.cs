@@ -18,12 +18,12 @@ namespace UserRepository
     VALUES (@Name, @Description, @Image, @Views, @KeepCount, @UserId, @PublicKeep);
     SELECT LAST_INSERT_ID();
     ", newKeep);
-    newKeep.Id = id;
+    newKeep.Id = id;   
     return newKeep;
     }
     public IEnumerable<Keep> GetAll()
     {
-      return _db.Query<Keep>("SELECT * FROM keeps");
+      return _db.Query<Keep>("SELECT * FROM keeps WHERE publicKeep = 1");
     }
 
     public IEnumerable<Keep> GetByUserId(int id)

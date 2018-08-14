@@ -15,12 +15,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/VaultDetails/:vaultId',
+      path: '/VaultDetails/:VaultId',
       name:'VaultDetails',
       component:VaultDetails
     },
     {
-      path: '/KeepDetails/:keepId',
+      path: '/KeepDetails/:KeepId',
       props: true,
       name:'KeepDetails',
       component: KeepDetails

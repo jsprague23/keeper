@@ -16,7 +16,7 @@ namespace UserController
 
     }
     [Authorize]
-    [HttpPost]
+    [HttpPost("/{id}")]
     public VaultKeeps CreateVaultKeep([FromBody]VaultKeeps newVaultKeep)
     {
       if(ModelState.IsValid)
@@ -41,6 +41,11 @@ namespace UserController
       return _db.GetByUserId(id);
     }
 
-    //need to write delete
+ [Authorize]
+    [HttpDelete("{id}")]
+    public bool DeleteVaultKeep(int id)
+     {
+       return _db.DeleteVaultKeep(id);
+    }
   }
 }
