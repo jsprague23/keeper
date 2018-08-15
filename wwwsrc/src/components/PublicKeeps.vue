@@ -32,12 +32,12 @@
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
                 <br>
-                <!-- <div id="checkboxes">
+                <div id="checkboxes">
                   <label>Public</label>
-                <input value="true" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep">
+                <input value="true" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep.true">
                 <label>Private</label>
-                <input value="false" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep">
-              </div> -->
+                <input value="false" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep.false">
+              </div>
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -60,8 +60,11 @@
           name: '',
           Image: '',
           Description: '',
-          // publicKeep: []
-        },
+          publicKeep:{
+            true:'',
+            false:''
+          }
+        }
         // props:{
         //   Public:{
         //     type:Boolean,
@@ -73,8 +76,7 @@
     },
     mounted() {
       this.$store.dispatch("getKeeps")
-      this.$store.dispatch("getVaults")
-    },
+      },
     computed: {
       
       Keeps() {
@@ -101,6 +103,7 @@
 
       },
       createKeep() {
+        debugger
         this.$store.dispatch('createKeep', this.newKeep)        
         this.toggleModal(-1)
       },
