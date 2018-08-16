@@ -28,7 +28,7 @@ namespace UserRepository
     }
     public IEnumerable<VaultKeeps> GetByVaultId(int vaultId)
     {
-      return _db.Query<VaultKeeps> ("SELECT * FROM vaultKeeps INNER JOIN keeps ON keeps.id = vaultKeeps.keepId WHERE vaultKeeps.vaultId = @id;", new { vaultId });
+      return _db.Query<VaultKeeps> ("SELECT * FROM vaultKeeps WHERE vaultKeeps.vaultId = @vaultId;", new { vaultId });
     }
     public bool DeleteVaultKeep(int id)
     {

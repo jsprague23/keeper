@@ -23,7 +23,7 @@
 --     id int(255) NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(20) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     publicKeep TINYINT,
+--     publicKeep TINYINT NOT NULL,
 --     image VARCHAR(255),
 --     views int (255),
 --     keepCount int (255),

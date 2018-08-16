@@ -124,7 +124,7 @@ export default new vuex.Store({
       })
     },
     getVaultById({dispatch, commit, state}, Vault){
-      api.get('/api/Vault/'+ Vault.id)
+      api.get('/api/Vault/vaultdetails/'+ Vault.id)
       .then(res=>{
         console.log(res)
         commit('setActiveVault', res.data)
@@ -156,7 +156,7 @@ export default new vuex.Store({
       })
     },
     getKeepById({commit, dispatch, state}, Keep){
-      api.get('/api/keep/'+ Keep.id)
+      api.get('/api/keep/keepdetails/'+ Keep.id)
       .then(res=>{
         commit('setActiveKeep', res.data)
         console.log(res)      

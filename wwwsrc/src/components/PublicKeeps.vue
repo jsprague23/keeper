@@ -33,10 +33,8 @@
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
                 <br>
                 <div id="checkboxes">
-                  <label>Public</label>
-                <input value="true" type="checkbox" placeholder="Public" id="checkbox" v-model="newKeep.publicKeep.true">
-                <label>Private</label>
-                <input value="false" type="checkbox" placeholder="Private" id="checkbox" v-model="newKeep.publicKeep.false">
+                  <label for="public">Public</label>
+                <input name="public"  type="checkbox" v-model="newKeep.publicKeep">
               </div>
                 <button type="submit">Create Keep</button>
               </form>
@@ -60,10 +58,7 @@
           name: '',
           Image: '',
           Description: '',
-          publicKeep:{
-            true:'',
-            false:''
-          }
+          publicKeep:false
         }
         // props:{
         //   Public:{

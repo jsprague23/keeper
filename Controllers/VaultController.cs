@@ -28,7 +28,7 @@ namespace UserController
       return null;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("vaultdetails/{id}")]
     public Vault GetById(int id)
     {
       return _db.GetByVaultId(id);

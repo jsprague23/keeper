@@ -31,7 +31,7 @@ namespace UserController
     {
       return _db.GetAll();
     }
-    [HttpGet("{id}")]
+    [HttpGet("keepdetails/{id}")]
     public Keep GetById(int id)
     {
       return _db.GetByKeepId(id);
