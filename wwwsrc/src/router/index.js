@@ -20,8 +20,7 @@ export default new Router({
       component:VaultDetails
     },
     {
-      path: '/KeepDetails/:KeepId',
-      props: true,
+      path: '/KeepDetails',      
       name:'KeepDetails',
       component: KeepDetails
     },

@@ -8,12 +8,6 @@
           <h4 class="logoFont">Views: {{activeKeep.views}}</h4>
           <h4 class="logoFont">Keeps: {{activeKeep.keepCount}}</h4>
           <img :src="activeKeep.image">
-          <select @click="editKeep(Keep)" v-model="selected">
-              <option v-for="option in options" v-bind:value="option.value">
-                {{option.text}}
-              </option>
-            </select>
-            <span>Selected: {{selected}}</span>
           <button v-if="currentUser" class="btn btn-danger" @click="deleteKeep(activeKeep.id)">Delete</button>
         </div>
       </div>      
@@ -24,18 +18,7 @@
 <script>
   export default {
     name: 'KeepDetails',
-    props: ['keepId'],
     data() {
-      selected: 'Public'
-      options: [{
-          text: 'Public',
-          value: 'public'
-        },
-        {
-          text: 'Private',
-          value: 'private'
-        }
-      ]
       return {
 
       }
@@ -48,7 +31,7 @@
         return this.$store.state.currentUser
       },
       activeKeep(){
-        return this.$store.state.activeKeep.find(k=> k.id == this.keepId)
+        return this.$store.state.activeKeep
         
       }
     },

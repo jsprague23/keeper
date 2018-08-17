@@ -95,7 +95,7 @@ export default new vuex.Store({
       commit("setActiveVault", Vault)
       
     },
-    activeKeep({commit,dispatch,state}, Keep){      
+    activeKeep({commit,dispatch,state}, Keep){
       commit("setActiveKeep", Keep)
       dispatch("getKeeps", Keep.id)
       Keep.views=state.activeKeep.views++
@@ -116,7 +116,7 @@ export default new vuex.Store({
     },
     getVaults({dispatch, commit,state}){      
       api.get('/api/Vault/userId/'+ state.currentUser.id)
-      .then(res =>{        
+      .then(res =>{
         commit('setVaults', res.data)
       })
       .catch(err=>{
@@ -135,12 +135,15 @@ export default new vuex.Store({
       commit('setVaults')
       dispatch('getVaults')
     },
-    createKeep({dispatch, commit},Keep){
+    createKeep({dispatch, commit, state},Keep){
       debugger
       api.post('/api/Keep', Keep)
       .then(res=>{
         dispatch("getKeeps",res.data)
         commit('setKeeps')
+        state.activeKeep = res.data
+          router.push({name: "KeepDetails"})
+
       })
       .catch(err=>{
         console.log(err)
@@ -163,6 +166,7 @@ export default new vuex.Store({
         router.push({name: 'KeepDetails', params:{id: res.data.id}})
       })
     },
+    
     getKeepsByUserId({commit, dispatch, state}){
       api.get('/api/keep/user/'+ state.currentUser.id)
       .then(res=>{
