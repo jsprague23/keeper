@@ -16,7 +16,7 @@ namespace UserController
 
     }
     [Authorize]
-    [HttpPost("/{id}")]
+    [HttpPost]
     public VaultKeeps CreateVaultKeep([FromBody]VaultKeeps newVaultKeep)
     {
       if(ModelState.IsValid)

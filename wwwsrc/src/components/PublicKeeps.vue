@@ -15,7 +15,7 @@
           <option  @click="addVaultKeep(Keep)" v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
         </select>
         <span>Selected: {{vaultId}}</span>
-        <button @click="addVaultKeep(Keep)">Add to Corral</button>
+        <button @click="addVaultKeep(Keep, vaultId)">Add to Corral</button>
       </div>
     </div>
     <div class="row">
@@ -88,7 +88,8 @@
       Modal
     },
     methods: {
-      addVaultKeep(Keep) {
+      addVaultKeep(Keep, vaultId) {
+        debugger
         this.$store.dispatch('createVaultKeep', {
           KeepId: Keep.id,
           VaultId: this.vaultId,
