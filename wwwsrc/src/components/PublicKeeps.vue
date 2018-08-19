@@ -88,11 +88,11 @@
       Modal
     },
     methods: {
-      addVaultKeep(Keep, vaultId) {
+      addVaultKeep(Keep, VaultId) {
         debugger
         this.$store.dispatch('createVaultKeep', {
           KeepId: Keep.id,
-          VaultId: this.vaultId,
+          VaultId: VaultId,
           UserId: this.currentUser.id
         })
         this.$store.dispatch('editKeep', Keep)
