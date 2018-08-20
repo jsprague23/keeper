@@ -70,7 +70,8 @@
       }
     },
     mounted() {
-      this.$store.dispatch("getKeeps")
+      this.$store.dispatch("getKeeps"),
+      this.$store.dispatch("getVaults")
       },
     computed: {
       

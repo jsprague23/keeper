@@ -191,11 +191,12 @@ export default new vuex.Store({
 
       })
     },
-    createVaultKeep({commit,dispatch,state},vault){
+    createVaultKeep({commit,dispatch,state},vaultKeep){
+      debugger
       var newVaultKeep={}
-      newVaultKeep.userId = state.currentUser.id
-      newVaultKeep.keepId = state.activeKeep.id
-      newVaultKeep.vaultId = vault.id
+      newVaultKeep.userId = vaultKeep.UserId
+      newVaultKeep.keepId = vaultKeep.KeepId
+      newVaultKeep.vaultId = vaultKeep.vaultId
       console.log(newVaultKeep)
       api.post('/api/vaultKeeps', newVaultKeep)
       .then(res=>{
