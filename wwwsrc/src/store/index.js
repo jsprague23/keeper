@@ -196,7 +196,7 @@ export default new vuex.Store({
       var newVaultKeep={}
       newVaultKeep.userId = vaultKeep.UserId
       newVaultKeep.keepId = vaultKeep.KeepId
-      newVaultKeep.vaultId = vaultKeep.vaultId
+      newVaultKeep.vaultId = vaultKeep.VaultId
       console.log(newVaultKeep)
       api.post('/api/vaultKeeps', newVaultKeep)
       .then(res=>{

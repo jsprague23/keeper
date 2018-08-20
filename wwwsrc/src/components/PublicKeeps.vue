@@ -96,7 +96,7 @@
           VaultId: VaultId,
           UserId: this.currentUser.id
         })
-        this.$store.dispatch('editKeep', Keep)
+        // this.$store.dispatch('editKeep', Keep, this.currentUser.id)
 
       },
       createKeep() {
