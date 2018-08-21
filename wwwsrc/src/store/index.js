@@ -200,8 +200,8 @@ export default new vuex.Store({
       console.log(newVaultKeep)
       api.post('/api/vaultKeeps', newVaultKeep)
       .then(res=>{
-        var newVaultKeep=state.activeKeep
-        newVaultKeep.keepCount= state.activeKeep.keepCount++;
+        dispatch('activeKeep', vaultKeep)
+        state.activeKeep.keepCount++;
         // dispatch('editKeep', newVaultKeep);
         dispatch('getVaultKeeps')
         commit("setVaultKeeps", res.data)
