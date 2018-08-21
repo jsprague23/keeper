@@ -203,8 +203,8 @@ export default new vuex.Store({
         dispatch('activeKeep', vaultKeep)
         state.activeKeep.keepCount++;
         // dispatch('editKeep', newVaultKeep);
-        dispatch('getVaultKeeps')
         commit("setVaultKeeps", res.data)
+        dispatch('getVaultKeeps')
       })
       .catch(err =>{
         console.log(err)
