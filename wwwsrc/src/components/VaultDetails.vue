@@ -7,15 +7,15 @@
     </div>
     <div class="row">
       <div class="card-columns">
-        <div v-for="VaultKeep in VaultKeeps">
+        <div v-if="keep.vaultId==activeVault.id" v-for="Keep in Keeps">
           <div class="card col-6">
             <router-link :to="{name: 'KeepDetails', params:{id: VaultKeep.id}}" @click="views">
-              <h3 class="card-title titles">{{VaultKeep.name}}</h3>
+              <h3 class="card-title titles">{{Keep.name}}</h3>
             </router-link>
-            <img :src="VaultKeep.image">
-            <h5>Description:{{VaultKeep.description}}</h5>
-            <h5>Views:{{VaultKeep.views}}</h5>
-            <h5>Wrangles:{{VaultKeep.keepCount}}</h5>            
+            <img :src="Keep.image">
+            <h5>Description:{{Keep.description}}</h5>
+            <h5>Views:{{Keep.views}}</h5>
+            <h5>Wrangles:{{Keep.keepCount}}</h5>            
           </div>
           <button class="btn btn-danger" @click="deleteKeep">Delete</button>
         </div>
@@ -68,17 +68,15 @@
     mounted(){
       this.$store.dispatch("getVaultKeeps", this.$route.params.id)
       this.$store.dispatch("activeVault")
+      this.$store.dispatch("getKeeps")
     },
     computed: {
       Keeps(){
-        this.$store.state.Keeps
+       return this.$store.state.Keeps
       },
       Vaults(){
         return this.$store.state.Vaults
-      },
-      VaultKeeps(){
-        return this.$store.state.userKeeps
-      },
+      },      
       activeVault(){
         return this.$store.state.activeVault
       },

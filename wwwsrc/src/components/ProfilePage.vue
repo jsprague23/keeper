@@ -3,8 +3,7 @@
     <div class="row">
       <div class="jumbotron">
         <h1 class="logoFont">Howdy there cowpolk!</h1>
-        <h5 class="logoFont">Don't be shy, look around stay awhile. This is your profile after all. My hats off to you. Its a pretty nice place
-          you've got here.</h5>
+        <h5 class="logoFont">Here you can create vaults, keeps go inside these "vaults" which are things you are interested in and "corral" other members keeps that you like!</h5>
       </div>
       <Vaults></Vaults>
     </div>

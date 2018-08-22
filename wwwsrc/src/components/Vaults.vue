@@ -12,9 +12,9 @@
             </router-link>
             <div class="card-body">
               <h3 class="logoFont font-weight-bold">Description:</h3>
-              <h4 class="logoFont font-weight-light ">{{Vault.Description}}</h4>
+              <h4 class="logoFont font-weight-light ">{{Vault.description}}</h4>
               <h3 class="logoFont font-weight-bold">Corral Author:</h3>
-              <h3 class="logoFont font-italic font-weight-bold">{{currentUser.name}}</h3>
+              <h3 class="logoFont font-italic font-weight-bold">{{currentUser.username}}</h3>
             </div>
           </div>
         </div>
