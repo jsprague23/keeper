@@ -24,7 +24,7 @@
       }
     },
     mounted(){
-      this.$store.dispatch('activeKeep')
+      this.$store.dispatch('activeKeep', this.$route.params.KeepId)
     },
     computed: {
       currentUser(){
