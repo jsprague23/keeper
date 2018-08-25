@@ -1,7 +1,7 @@
 <template>
   <div class="Keeps container-fluid d-flex justify-content-center">
     <div class="row">
-        <!-- v-if="Keep.publicKeep==true"  -->
+      <!-- v-if="Keep.publicKeep==true"  -->
       <div v-for="Keep in Keeps" class="col" :key="Keep.id">
         <router-link :to="{name: 'KeepDetails', params:{KeepId: Keep.id}}" @click="activeKeep(Keep)">
           <h2 class="card-title titles">{{Keep.name}}</h2>
@@ -12,7 +12,7 @@
         <img :src="Keep.image">
         <select v-model="vaultId">
           <option disabled>Select a Corral</option>
-          <option  @click="addVaultKeep(Keep)" v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
+          <option @click="addVaultKeep(Keep)" v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
         </select>
         <span>Selected: {{vaultId}}</span>
         <button @click="addVaultKeep(Keep, vaultId)">Add to Corral</button>
@@ -34,8 +34,8 @@
                 <br>
                 <div id="checkboxes">
                   <label for="public">Public</label>
-                <input name="public"  type="checkbox" v-model="newKeep.publicKeep">
-              </div>
+                  <input name="public" type="checkbox" v-model="newKeep.publicKeep">
+                </div>
                 <button type="submit">Create Keep</button>
               </form>
             </div>
@@ -48,7 +48,7 @@
 
 <script>
   import Modal from './Modal'
-    export default {
+  export default {
     name: 'PublicKeeps',
     data() {
       return {
@@ -58,7 +58,7 @@
           name: '',
           Image: '',
           Description: '',
-          publicKeep:false
+          publicKeep: false
         }
         // props:{
         //   Public:{
@@ -71,10 +71,10 @@
     },
     mounted() {
       this.$store.dispatch("getKeeps"),
-      this.$store.dispatch("getVaults")
-      },
+        this.$store.dispatch("getVaults")
+    },
     computed: {
-      
+
       Keeps() {
         return this.$store.state.Keeps
       },
@@ -101,22 +101,15 @@
       },
       createKeep() {
         debugger
-        this.$store.dispatch('createKeep', this.newKeep)        
+        this.$store.dispatch('createKeep', this.newKeep)
         this.toggleModal(-1)
       },
-      // publicKeep(Keep){
-      //   Keep.public=!Keep.public
-      //   this.$store.dispatch('editKeep', Keep)
-
-      // },
       toggleModal(n) {
         this.showModal += n
       },
       activeKeep(Keep) {
-        Keep.views++
-        this.$store.dispatch('activeKeep', Keep)
-        this.$store.dispatch('editKeep', Keep)
-        }
+        this.$store.dispatch('activeKeep', this.$route.params.Keep.id)
+      }
     }
   }
 

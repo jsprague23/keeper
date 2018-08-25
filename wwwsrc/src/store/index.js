@@ -96,12 +96,15 @@ export default new vuex.Store({
       
     },
     activeKeep({commit,dispatch,state}, Keep){
-      commit("setActiveKeep", Keep)
-      dispatch("getKeeps", Keep.id)
-      Keep.views=state.activeKeep.views++
-      
-      // router.push({name:"KeepDetails", params:{id:Keep.id}})
-    },    
+      api.post("/api/keep/" + Keep.id)
+      .then(res => {
+        commit("setActiveKeep", Keep)
+        dispatch("getKeeps", Keep.id)
+        Keep.views++
+        dispatch("editKeep", Keep)
+      })
+      router.push({name:"KeepDetails", params:{id:Keep.id}})
+    },
     createVault({commit,dispatch,state}, Vault){
       api.post("/api/Vault", Vault)      
       .then(res => {
