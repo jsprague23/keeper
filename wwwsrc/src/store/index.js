@@ -96,6 +96,7 @@ export default new vuex.Store({
       
     },
     activeKeep({commit,dispatch,state}, Keep){
+      debugger
       api.post("/api/keep/" + Keep.id)
       .then(res => {
         commit("setActiveKeep", Keep)

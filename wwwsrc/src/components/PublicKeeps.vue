@@ -108,7 +108,8 @@
         this.showModal += n
       },
       activeKeep(Keep) {
-        this.$store.dispatch('activeKeep', this.$route.params.Keep.id)
+        debugger
+        this.$store.dispatch('activeKeep', this.$route.params.Keep)
       }
     }
   }
