@@ -24,7 +24,7 @@
       }
     },
     mounted(){
-      this.$store.dispatch('activeKeep', this.$route.params.Keep)
+      this.$store.dispatch('getKeepById', this.$route.params.KeepId)
       debugger
     },
     computed: {
