@@ -3,15 +3,22 @@
     <div class="row">
       <div class="jumbotron">
         <h1 class="logoFont">Howdy there cowpolk!</h1>
-        <h5 class="logoFont">Here you can create corrals which are where you can keep(wrangle) your favorite things! Keeps go inside these "corrals" which are things you are interested. You can also "wrangle" other members keeps that you like!</h5>
+        <h5 class="logoFont">Here you can create corrals which are where you can keep(wrangle) your favorite things! Keeps go inside these "corrals"
+          which are things you are interested. You can also "wrangle" other members keeps that you like!</h5>
       </div>
+    </div>
+    <div class="row">
       <Vaults></Vaults>
+    </div>
+    <div class="row">
+      <UserKeeps></UserKeeps>
     </div>
   </div>
 </template>
 
 <script>
   import Vaults from './Vaults'
+  import UserKeeps from './UserKeeps'
   import Modal from './Modal'
   export default {
     name: 'ProfilePage',
@@ -22,7 +29,8 @@
     },
     components: {
       Vaults,
-      Modal
+      Modal,
+      UserKeeps
     },
     computed: {
       currentUser() {

@@ -9,11 +9,17 @@ import Modal from '@/components/Modal'
 import PublicKeeps from '@/components/PublicKeeps'
 import KeepDetails from '@/components/KeepDetails'
 import VaultDetails from '@/components/VaultDetails'
+import UserKeeps from '@/components/UserKeeps'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/UserKeeps',
+      name:'UserKeeps',
+      component: UserKeeps
+    },
     {
       path: '/VaultDetails/:VaultId',
       name:'VaultDetails',

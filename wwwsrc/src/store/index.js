@@ -47,6 +47,7 @@ export default new vuex.Store({
       state.activeVault=Vault
     },
     setKeeps(state,Keeps){
+      debugger
       state.Keeps=Keeps
     },
     setVaultKeeps(state, VaultKeeps){
@@ -169,6 +170,7 @@ export default new vuex.Store({
     },
     
     getKeepsByUserId({commit, dispatch, state}){
+      debugger
       api.get('/api/keep/user/'+ state.currentUser.id)
       .then(res=>{
         commit('setKeeps', res.data)

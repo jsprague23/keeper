@@ -57,7 +57,7 @@
       }
     },
     mounted(){
-      this.$store.dispatch('getVaults')
+      this.$store.dispatch('getVaults', this.$route.params.id)
     },
    components: {
       Modal

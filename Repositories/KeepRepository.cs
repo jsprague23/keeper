@@ -14,8 +14,8 @@ namespace UserRepository
     public Keep CreateKeep(Keep newKeep)
     {
       int id = _db.ExecuteScalar<int>(@"
-    INSERT INTO keeps(name, description, image, views, keepCount, userId, publicKeep)
-    VALUES (@Name, @Description, @Image, @Views, @KeepCount, @UserId, @PublicKeep);
+    INSERT INTO keeps(name, description, image, views, keepCount, userId, publicKeep, vaultId)
+    VALUES (@Name, @Description, @Image, @Views, @KeepCount, @UserId, @PublicKeep, @VaultId);
     SELECT LAST_INSERT_ID();
     ", newKeep);
     newKeep.Id = id;   
@@ -45,6 +45,7 @@ namespace UserRepository
       views = @Views,
       keepCount = @KeepCount,
       description = @Description,
+      vaultId = @VaultId,
       image = @Image
       WHERE id = @Id
       ", Keep);

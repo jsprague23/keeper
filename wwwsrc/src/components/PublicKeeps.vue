@@ -31,6 +31,11 @@
                 <input type="text" placeholder="Keep Name" v-model="newKeep.name" required>
                 <input type="url" placeholder="Keep Image Url" v-model="newKeep.Image">
                 <input type="text" placeholder="Keep Description" v-model="newKeep.Description">
+                <select v-model="newKeep.vaultId">
+                    <option disabled>Select a Corral</option>
+                    <option @click="addVaultKeep(Keep)" v-for="Vault in Vaults" :value="Vault.id" :key="Vault.id">{{Vault.name}}</option>
+                  </select>
+                  <span>Selected: {{vaultId}}</span>
                 <br>
                 <div id="checkboxes">
                   <label for="public">Public</label>
@@ -58,6 +63,7 @@
           name: '',
           Image: '',
           Description: '',
+          vaultId:'',
           publicKeep: false
         }
         // props:{
@@ -90,7 +96,6 @@
     },
     methods: {
       addVaultKeep(Keep, VaultId) {
-        debugger
         this.$store.dispatch('createVaultKeep', {
           KeepId: Keep.id,
           VaultId: VaultId,
