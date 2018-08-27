@@ -3,7 +3,7 @@
     <div class="row">
       <div class="jumbotron">
         <h1 class="logoFont">Howdy there cowpolk!</h1>
-        <h5 class="logoFont">Here you can create vaults, keeps go inside these "vaults" which are things you are interested in and "corral" other members keeps that you like!</h5>
+        <h5 class="logoFont">Here you can create corrals which are where you can keep(wrangle) your favorite things! Keeps go inside these "corrals" which are things you are interested. You can also "wrangle" other members keeps that you like!</h5>
       </div>
       <Vaults></Vaults>
     </div>

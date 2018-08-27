@@ -100,7 +100,6 @@
 
       },
       createKeep() {
-        debugger
         this.$store.dispatch('createKeep', this.newKeep)
         this.toggleModal(-1)
       },
@@ -108,7 +107,6 @@
         this.showModal += n
       },
       activeKeep(Keep) {
-        debugger
         this.$store.dispatch('activeKeep', Keep)
       }
     }
