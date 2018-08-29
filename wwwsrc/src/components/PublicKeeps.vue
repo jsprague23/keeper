@@ -95,12 +95,16 @@
       Modal
     },
     methods: {
-      addVaultKeep(Keep, VaultId) {
-        this.$store.dispatch('createVaultKeep', {
-          KeepId: Keep.id,
+      addVaultKeep(keep, VaultId) {
+        let vaultKeep = {
+          KeepId: keep.id,
           VaultId: VaultId,
           UserId: this.currentUser.id
-        })
+        }
+        let payload = {
+          vaultKeep, keep
+        }
+        this.$store.dispatch('createVaultKeep', payload)
         // this.$store.dispatch('editKeep', Keep, this.currentUser.id)
 
       },

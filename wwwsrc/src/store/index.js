@@ -47,7 +47,6 @@ export default new vuex.Store({
       state.activeVault=Vault
     },
     setKeeps(state,Keeps){
-      debugger
       state.Keeps=Keeps
     },
     setVaultKeeps(state, VaultKeeps){
@@ -99,8 +98,8 @@ export default new vuex.Store({
     activeKeep({commit,dispatch,state}, Keep){
       api.get("/api/keepdetails/" + Keep.id)
       .then(res => {
-        commit("setActiveKeep", Keep)
         Keep.views++
+        commit("setActiveKeep", Keep)
         dispatch("editKeep", Keep)
       })
       router.push({name:"KeepDetails", params:{id:Keep.id}})
@@ -170,7 +169,6 @@ export default new vuex.Store({
     },
     
     getKeepsByUserId({commit, dispatch, state}){
-      debugger
       api.get('/api/keep/user/'+ state.currentUser.id)
       .then(res=>{
         commit('setKeeps', res.data)
@@ -181,7 +179,6 @@ export default new vuex.Store({
       api.put('/api/Keep/'+ keep.id, keep)
       .then(res=> {
         console.log(res)
-        commit('setKeeps', res.data)
         dispatch('getKeeps')
       })
     },
@@ -195,20 +192,18 @@ export default new vuex.Store({
 
       })
     },
-    createVaultKeep({commit,dispatch,state},vaultKeep){
+    createVaultKeep({commit,dispatch,state},payload){
       var newVaultKeep={}
-      newVaultKeep.userId = vaultKeep.UserId
-      newVaultKeep.keepId = vaultKeep.KeepId
-      newVaultKeep.vaultId = vaultKeep.VaultId
+      newVaultKeep.userId = payload.vaultKeep.UserId
+      newVaultKeep.keepId = payload.vaultKeep.KeepId
+      newVaultKeep.vaultId = payload.vaultKeep.VaultId
       console.log(newVaultKeep)
       api.post('/api/vaultKeeps', newVaultKeep)
       .then(res=>{
-        dispatch('activeKeep', vaultKeep)
-        state.activeKeep.keepCount++;
-        // dispatch('editKeep', newVaultKeep);
-        commit("setVaultKeeps", res.data)
-        dispatch('getVaultKeeps')
-      })
+        payload.keep.keepCount++;
+        dispatch('activeKeep', payload.keep)
+        dispatch('editKeep', payload.keep);
+        })
       .catch(err =>{
         console.log(err)
       })
