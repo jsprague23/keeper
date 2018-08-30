@@ -76,8 +76,9 @@
       }
     },
     mounted() {
-      this.$store.dispatch("getKeeps"),
-        this.$store.dispatch("getVaults")
+      this.$store.dispatch('authenticate'),
+      this.$store.dispatch("getKeeps", this.$route.params.id),
+        this.$store.dispatch('getVaults', this.$route.params.id)
     },
     computed: {
 

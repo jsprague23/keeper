@@ -53,7 +53,7 @@
   <script>
     import Modal from './Modal'
     export default {
-      name: 'PublicKeeps',
+      name: 'UserKeeps',
       data() {
         return {
           vaultId: '',
@@ -75,7 +75,7 @@
         }
       },
       mounted() {
-        this.$store.dispatch("getKeepsByUserId"),
+        this.$store.dispatch("getKeepsByUserId", this.$route.params.id),
           this.$store.dispatch("getVaults")
       },
       computed: {

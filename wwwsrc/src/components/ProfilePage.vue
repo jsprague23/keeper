@@ -36,9 +36,10 @@
       currentUser() {
         return this.$store.state.currentUser
       },
-      userVaults() {
-        return this.$store.state.Vaults
-      }
+      // userVaults() {
+      //   return this.$store.state.Vaults
+      // },
+
     },
     methods: {
 
