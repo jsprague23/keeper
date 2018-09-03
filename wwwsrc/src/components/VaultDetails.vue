@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="card-columns">
-        <div v-if="Keep.vaultId==activeVault.id" v-for="Keep in Keeps">
+        <div  v-for="Keep in Keeps">
           <div class="card col-6">
             <router-link :to="{name: 'KeepDetails', params:{id: Keep.id}}" @click="activeKeep(Keep)">
               <h3 class="card-title titles">{{Keep.name}}</h3>
@@ -66,9 +66,10 @@
       Modal
     },
     mounted(){
-      this.$store.dispatch("getVaultKeeps", this.$route.params.Vault.id)
-      this.$store.dispatch("activeVault", this.$route.params.Vault.id)
-      this.$store.dispatch("getKeeps", this.route.params.Vault.id)
+      debugger
+      this.$store.dispatch("getVaultKeeps", this.$route.params.VaultId)
+      this.$store.dispatch("activeVault", this.$route.params)
+      // this.$store.dispatch("getKeeps")
       },
     computed: {
       Keeps(){

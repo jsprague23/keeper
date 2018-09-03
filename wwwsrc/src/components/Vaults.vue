@@ -71,8 +71,9 @@
       }
     },
     methods: {
-      getVaultById(Vault){
-        this.$store.dispatch('getVaultById', Vault)
+      getVaultById(vault){
+        debugger
+        this.$store.dispatch('getVaultById', vault.id)
       },
       deleteVault(id) {
         this.$store.dispatch('deleteVault', id)

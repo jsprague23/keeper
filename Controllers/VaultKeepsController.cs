@@ -33,15 +33,10 @@ namespace UserController
       return _db.GetByVaultId(id);
     }
     [Authorize]
-    [HttpGet]
-    public IEnumerable<VaultKeeps> GetByUserId()
-    {
-      var user = HttpContext.User;
-      var id = user.Identity.Name;
-      return _db.GetByUserId(id);
-    }
+    [HttpGet("/{id}")]
+    public IEnumerable<VaultKeeps> GetByUserId(string id) => _db.GetByUserId(id);
 
- [Authorize]
+    [Authorize]
     [HttpDelete("{id}")]
     public bool DeleteVaultKeep(int id)
      {

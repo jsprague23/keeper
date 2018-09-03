@@ -159,13 +159,12 @@ export default new vuex.Store({
         console.log(err)
       })
     },
-    getKeepById({commit, dispatch, state}, KeepId){
+    getKeepsById({commit, dispatch, state}, KeepId){
       api.get('/api/keep/keepdetails/'+ KeepId)
       .then(res=>{
-        commit('setActiveKeep', res.data)
+        commit('setKeeps', res.data)
         console.log(res)
-        router.push({name: 'KeepDetails', params:{id: res.data.id}})
-      })
+        })
     },
     
     getKeepsByUserId({commit, dispatch, state}){
@@ -209,10 +208,14 @@ export default new vuex.Store({
       })
      
     },
-    getVaultKeeps({commit, state},){
-      api.get('/api/VaultKeeps/'+ state.activeVault.id)
+    getVaultKeeps({commit,dispatch, state}, vaultId){
+      debugger
+      api.get('/api/VaultKeeps/'+ vaultId)
       .then(res=>{
-        commit('setVaultKeeps', res.data)
+        dispatch('getKeepsById', res.data.keepId)        
+      })
+      .catch(err=>{
+        console.log(err)
       })
     }
     
