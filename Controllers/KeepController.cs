@@ -37,7 +37,7 @@ namespace UserController
       return _db.GetByKeepId(id);
     }
     [HttpGet("user/{id}")]
-    public IEnumerable<Keep> GetByUserId(int id)
+    public IEnumerable<Keep> GetByUserId(string id)
     {
       return _db.GetByUserId(id);
     }

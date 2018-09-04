@@ -26,7 +26,7 @@ namespace UserRepository
       return _db.Query<Keep>("SELECT * FROM keeps WHERE publicKeep = 1");
     }
 
-    public IEnumerable<Keep> GetByUserId(int id)
+    public IEnumerable<Keep> GetByUserId(string id)
     {
       return _db.Query<Keep>("SELECT * FROM keeps WHERE userId = @Id;", new { id });
     }
