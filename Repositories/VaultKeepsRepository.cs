@@ -26,9 +26,9 @@ namespace UserRepository
     {
       return _db.Query<VaultKeeps>("SELECT * FROM vaultKeeps INNER JOIN keeps ON keeps.id = vaultKeeps.keepId WHERE userId = @id;", new { id });
     }
-    public IEnumerable<VaultKeeps> GetByVaultId(int vaultId)
+    public IEnumerable<Keep> GetByVaultId(int vaultId)
     {
-      return _db.Query<VaultKeeps> ("SELECT * FROM vaultKeeps WHERE vaultKeeps.vaultId = @vaultId;", new { vaultId });
+      return _db.Query<Keep> ("SELECT * FROM vaultkeeps INNER JOIN keeps ON keeps.id = vaultkeeps.keepId WHERE vaultkeeps.vaultId = @vaultId;", new { vaultId });
     }
     public bool DeleteVaultKeep(int id)
     {

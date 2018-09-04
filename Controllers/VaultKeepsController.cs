@@ -28,7 +28,7 @@ namespace UserController
       return null;
     }
     [HttpGet("{id}")]
-    public IEnumerable<VaultKeeps> GetByVaultId(int id)
+    public IEnumerable<Keep> GetByVaultId(int id)
     {
       return _db.GetByVaultId(id);
     }

@@ -3,7 +3,7 @@
     <div class="row">
       <!-- v-if="Keep.publicKeep==true"  -->
       <div v-for="Keep in Keeps" class="col" :key="Keep.id">
-        <router-link :to="{name: 'KeepDetails', params:{KeepId: Keep.id}}" @click.native="activeKeep(Keep)">
+        <router-link :to="{name: 'KeepDetails', params:{KeepId: Keep.id}}">
           <h2 class="card-title titles">{{Keep.name}}</h2>
         </router-link>
         <h4 class="logoFont">Description: {{Keep.description}}</h4>
