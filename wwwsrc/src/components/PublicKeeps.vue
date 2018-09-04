@@ -76,6 +76,7 @@
       }
     },
     mounted() {
+      debugger
       this.$store.dispatch('authenticate'),
       this.$store.dispatch("getKeeps", this.$route.params.id),
         this.$store.dispatch('getVaults', this.$route.params.id)

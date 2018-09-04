@@ -15,7 +15,7 @@
             <img :src="Keep.image">
             <h5>Description:{{Keep.description}}</h5>
             <h5>Views:{{Keep.views}}</h5>
-            <h5>Wrangles:{{Keep.keepCount}}</h5>            
+            <h5>Wrangles:{{Keep.keepCount}}</h5>
           </div>
           <button class="btn btn-danger" @click="deleteKeep">Delete</button>
         </div>

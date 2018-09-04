@@ -24,7 +24,8 @@
       }
     },
     mounted(){
-      this.$store.dispatch('getKeepById', this.$route.params.KeepId)
+      debugger
+      this.$store.dispatch('getKeepsById', this.$route.params.KeepId)
       },
     computed: {
       currentUser(){
