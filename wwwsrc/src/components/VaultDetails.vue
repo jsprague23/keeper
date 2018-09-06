@@ -67,8 +67,8 @@
     },
     mounted(){
       debugger
-      this.$store.dispatch("getVaultKeeps", this.$route.params.VaultId)
-      this.$store.dispatch("activeVault", this.$route.params)
+      this.$store.dispatch("activeVault", this.$route.params.VaultId)
+      this.$store.dispatch("getVaultKeeps", this.$route.params.VaultId.id)
       // this.$store.dispatch("getKeeps")
       },
     computed: {

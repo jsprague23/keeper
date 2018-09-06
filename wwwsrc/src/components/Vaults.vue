@@ -7,7 +7,7 @@
       <div class="row">
         <div class="card-columns">
           <div class="card" v-for="Vault in Vaults" :key="Vault.id">
-            <router-link @click.native="getVaultById(Vault)" :to="{name: 'VaultDetails', params:{VaultId: Vault.id}}">
+            <router-link :to="{name: 'VaultDetails', params:{VaultId: Vault}}">
               <h3 class="card-title logoFont clicker">{{Vault.name}}</h3>
             </router-link>
             <div class="card-body">
@@ -73,7 +73,7 @@
     methods: {
       getVaultById(vault){
         debugger
-        this.$store.dispatch('getVaultById', vault.id)
+        this.$store.dispatch('getVaultById', vault)
       },
       deleteVault(id) {
         this.$store.dispatch('deleteVault', id)
