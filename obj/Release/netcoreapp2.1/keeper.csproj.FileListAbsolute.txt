@@ -1,0 +1,11 @@
+C:\Users\jerem\source\CodeWorks\keeper\bin\Release\netcoreapp2.1\keeper.deps.json
+C:\Users\jerem\source\CodeWorks\keeper\bin\Release\netcoreapp2.1\keeper.runtimeconfig.json
+C:\Users\jerem\source\CodeWorks\keeper\bin\Release\netcoreapp2.1\keeper.runtimeconfig.dev.json
+C:\Users\jerem\source\CodeWorks\keeper\bin\Release\netcoreapp2.1\keeper.dll
+C:\Users\jerem\source\CodeWorks\keeper\bin\Release\netcoreapp2.1\keeper.pdb
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.csprojAssemblyReference.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.csproj.CoreCompileInputs.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.AssemblyInfoInputs.cache
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.AssemblyInfo.cs
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.dll
+C:\Users\jerem\source\CodeWorks\keeper\obj\Release\netcoreapp2.1\keeper.pdb
