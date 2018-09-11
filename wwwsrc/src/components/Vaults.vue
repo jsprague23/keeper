@@ -23,7 +23,7 @@
     <div class="row">
       <div class="card-columns">
         <div>
-          <button class="logoFont" @click="toggleModal(1)">Create a Vault</button>
+          <button class="logoFont" @click="toggleModal(1)">Create a Corral</button>
           <modal :toggle="showModal">
             <div slot="header">
               <h3 class="logoFont">Create Vault</h3>

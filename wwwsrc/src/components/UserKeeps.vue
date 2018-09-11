@@ -1,6 +1,11 @@
 <template>
     <div class="Keeps container-fluid d-flex justify-content-center">
       <div class="row">
+        <div class="jumbotron logoFont">
+          <h1>Your Keeps</h1>
+        </div>
+        </div>
+        <div class="row">
         <div v-for="Keep in Keeps" class="col" :key="Keep.id">
           <router-link :to="{name: 'KeepDetails', params:{KeepId: Keep.id}}" @click.native="activeKeep(Keep)">
             <h2 class="card-title titles">{{Keep.name}}</h2>
@@ -119,6 +124,43 @@
   </script>
   
   <style>
-  
+    .clicker {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+
+  html {
+    background: #d5eeff;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .jumbotron {
+    text-align: center;
+    background: #f7ca44;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    margin-bottom: auto;
+
+
+  }
+
+
+  .container-fluid {
+    background: #d5eeff;
+    background-size: cover;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .logoFont {
+    font-family: 'Caveat', cursive;
+  }
   
   </style>
